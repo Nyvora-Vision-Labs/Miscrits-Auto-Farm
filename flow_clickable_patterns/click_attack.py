@@ -1,4 +1,4 @@
-from utils import click
+from utils import click, click_random
 
 def click_attack():
-    click(3200, 420)
+    click_random(2750, 720, 2785, 760)  # example rectangle instead of single point

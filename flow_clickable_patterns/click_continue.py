@@ -1,4 +1,4 @@
-from utils import click
+from utils import click, click_random
 
 def click_continue():
-    click(3200, 420)
+    click_random(3185, 420, 3220, 425)  # adjust these bounds as needed
