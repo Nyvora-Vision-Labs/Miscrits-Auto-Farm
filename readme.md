@@ -3,6 +3,8 @@
 
 An automated Wooly XP farming bot for Miscrits. Captures Wooly and defeats all other crits. Requires **Light Zaptor maxed out** as your attacker with relics equipped.
 
+All the scripts inside the **flow_clickable_patterns** folder helps automate things. Run main.py to get started. You might need to fix coordinates as per your device. Secondary Monitor is preferred as we are still testing this.
+
 ---
 
 ## Setup
