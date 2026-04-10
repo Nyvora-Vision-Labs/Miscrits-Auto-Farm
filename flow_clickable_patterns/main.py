@@ -43,9 +43,10 @@ if __name__ == "__main__":
                 time.sleep(random.uniform(7, 8))
                 click_continue()
 
-                # ✅ Wait 13s after a completed battle before re-clicking chest
-                print("⏳ Waiting 13 seconds before next chest click...")
-                for _ in range(130):
+                # ✅ Wait 12-14s after a completed battle before re-clicking chest
+                chest_delay = random.uniform(12, 14)
+                print(f"⏳ Waiting {chest_delay:.1f} seconds before next chest click...")
+                for _ in range(int(chest_delay * 10)):
                     if stop:
                         break
                     time.sleep(0.1)
