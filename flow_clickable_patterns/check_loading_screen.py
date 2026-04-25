@@ -1,23 +1,31 @@
 import time
 import cv2
+import threading
 from utils import matches_screen, screenshot
 
 LOADING_REF = "images/loading_page_2.png"
 
 def check_loading_screen():
-    for i, delay in enumerate([0.5, 0.7, 0.9], start=1):
+    
+    delays = [0.77,0.82, 0.85, 0.90]
+    results = [None] * len(delays)
+
+    def capture_and_check(index, delay):
         time.sleep(delay)
-
-        # Capture screenshot using your existing function
         img = screenshot()
-
-        # Save debug image
-        filename = f"debug_screenshot_{i}.png"
-        cv2.imwrite(filename, img)
+        filename = f"debug_screenshot_{index}.png"
+        #cv2.imwrite(filename, img)
         print(f"📸 Saved {filename}")
+        results[index] = matches_screen(LOADING_REF)
 
-        # Run matching
-        if matches_screen(LOADING_REF):
-            return True
+    threads = [
+        threading.Thread(target=capture_and_check, args=(i, delay))
+        for i, delay in enumerate(delays)
+    ]
 
-    return False
+    for t in threads:
+        t.start()
+    for t in threads:
+        t.join()
+
+    return any(results)

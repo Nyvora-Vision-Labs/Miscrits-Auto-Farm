@@ -68,7 +68,6 @@ def click_random(x1, y1, x2, y2):
 def screenshot():
     with mss.mss() as sct:
         img = np.array(sct.grab(MONITOR))
-        cv2.imwrite("debug_screenshot.png", img)
         return cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
 
 def matches_screen(ref_path, threshold=0.5):
